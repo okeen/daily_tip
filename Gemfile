@@ -37,9 +37,36 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
-gem "cucumber-rails", :group => [:development, :test]
 gem "capybara", :group => [:development, :test]
 gem "devise"
 gem "haml", ">= 3.0.0"
 gem "haml-rails"
-gem "rspec-rails", ">= 2.0.1", :group => [:development, :test]
+
+gem 'inherited_resources'
+gem 'simple_form'
+gem 'kaminari'
+
+group :development do
+  gem 'mail_view', git: 'https://github.com/37signals/mail_view.git'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
+  gem 'mocha'
+  gem 'capybara-webkit'
+  gem 'email_spec'
+  gem 'database_cleaner'
+  gem 'faker'
+
+  gem 'debugger'
+  gem 'pry'
+
+  gem 'guard'
+  gem 'guard-spork'
+  gem 'guard-rspec'
+  gem 'guard-cucumber'
+
+  gem 'spork-rails'
+end
