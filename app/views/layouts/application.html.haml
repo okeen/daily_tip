@@ -1,0 +1,27 @@
+!!!
+%html
+  %head
+    %title #{yield :meta_title} | Daily Tip
+
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+
+    = csrf_meta_tags
+
+  %body{class: "#{controller_path.split("/").join(" ")}"}
+
+    = render 'menu'
+
+    %br
+
+    .subbar
+      .container
+        .row
+          .span12
+            %h1= yield :title
+
+    .container
+      -#= render 'submenu'
+      = yield
+
+    = render 'footer'
