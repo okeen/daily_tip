@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title #{yield :meta_title} | Daily Tip
+    %title Daily Tip
 
     = stylesheet_link_tag "application"
     = javascript_include_tag "application"
@@ -18,10 +18,9 @@
       .container
         .row
           .span12
-            %h1= yield :title
+            %h1= t("logo")
 
     .container
-      -#= render 'submenu'
       = yield
 
     = render 'footer'

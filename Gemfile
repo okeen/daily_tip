@@ -22,6 +22,8 @@ gem 'inherited_resources'
 gem 'simple_form'
 gem 'kaminari'
 
+gem "tabs_on_rails"
+
 gem "pg"
 
 group :development do
