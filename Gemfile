@@ -24,6 +24,8 @@ gem 'kaminari'
 
 gem "tabs_on_rails"
 
+gem 'acts-as-taggable-on'
+
 gem "pg"
 
 group :development do

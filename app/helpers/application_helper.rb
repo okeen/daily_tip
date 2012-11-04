@@ -64,4 +64,10 @@ module ApplicationHelper
     text = t("#{controller_name}.#{action_name}.title") if text.blank?
     content_tag :h1, text, class: "page_title"
   end
+
+  def tip_tag_list_for(tip)
+    tip.tag_list.map do |tag|
+      link_to "tag", "#", class: "tag badge"
+    end.join.html_safe
+  end
 end

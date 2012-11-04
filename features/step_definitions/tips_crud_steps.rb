@@ -14,11 +14,14 @@ Given /^some existing tips$/ do
 end
 
 Then /^I can create a new tip$/ do
+  step "I set the tip basic info"
+  click_button "Create Tip"
+end
+
+Then /^I set the tip basic info$/ do
   click_link "Post a tip"
   fill_in "Title", with: "A cool tip"
   fill_in "Content", with: Faker::Lorem.paragraph
-
-  click_button "Create Tip"
 end
 
 When /^I should see the recently created tip in the tips list page$/ do
