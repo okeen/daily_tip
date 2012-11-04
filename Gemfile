@@ -32,7 +32,8 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  gem 'cucumber-rails'
+  gem "factory_girl_rails", "~> 4.0"
   gem 'shoulda-matchers'
   gem 'mocha'
   gem 'capybara-webkit'

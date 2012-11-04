@@ -1,7 +1,7 @@
 .navbar.navbar-fixed-top
   .navbar-inner
     .container
-      = t("logo")
+      = link_to t("logo"), root_path, class: "brand"
       .nav-collapse
         = tabs_tag open_tabs: {class: 'nav'}, builder: MenuBuilder do |tab|
           = tab.home [:tips]

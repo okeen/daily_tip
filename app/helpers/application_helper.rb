@@ -58,4 +58,10 @@ module ApplicationHelper
 
     (icon + " #{content}".html_safe)
   end
+
+  def page_title
+    text = content_for(:title)
+    text = t("#{controller_name}.#{action_name}.title") if text.blank?
+    content_tag :h1, text, class: "page_title"
+  end
 end

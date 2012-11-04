@@ -1,7 +1,10 @@
 DailyTip::Application.routes.draw do
+  root to: "tips#index"
+
   resources :tips
 
   devise_for :users
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

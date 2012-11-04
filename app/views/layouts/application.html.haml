@@ -18,7 +18,8 @@
       .container
         .row
           .span12
-            %h1= t("logo")
+            = page_title
+            = render_flash
 
     .container
       = yield
