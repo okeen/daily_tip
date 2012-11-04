@@ -9,6 +9,10 @@ Given /^a logged user$/ do
   page.should have_selector ".alert-success", content: "Signed in successfully"
 end
 
+Given /^some existing tips$/ do
+  create :tip, author: @user, title: "Simple tip", content: "A simple tip content"
+end
+
 Then /^I can create a new tip$/ do
   click_link "Post a tip"
   fill_in "Title", with: "A cool tip"
@@ -20,5 +24,19 @@ end
 When /^I should see the recently created tip in the tips list page$/ do
   page.should have_selector ".alert-success", content: "Tip was succesfully created"
   click_link "Tips"
+
   page.should have_selector ".tip", content: "A cool tip"
+end
+
+Then /^I can see details about the tips$/ do
+  click_link "Tips"
+  @tip = Tip.last
+
+  within "#tip_#{@tip.id}" do
+    click_link "Show"
+  end
+
+  page.should have_content "Simple tip"
+  page.should have_content "A simple tip content"
+  page.should have_content "user@daily_tip.dev"
 end

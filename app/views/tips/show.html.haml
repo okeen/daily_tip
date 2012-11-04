@@ -1,11 +1,14 @@
-%p#notice= notice
-
 %p
   %b Title:
   = @tip.title
 %p
   %b Content:
   = @tip.content
+
+%p
+  %b Author:
+  = @tip.author.email
+
 
 = link_to 'Edit', edit_tip_path(@tip)
 \|

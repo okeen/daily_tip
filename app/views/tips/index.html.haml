@@ -1,5 +1,5 @@
 %ol#tips.well.span6
   - @tips.each do |tip|
-    %li.tip
+    %li.tip{id: "tip_#{tip.id}"}
       = tip.title
       = link_to 'Show', tip, class: "btn btn-primary"
