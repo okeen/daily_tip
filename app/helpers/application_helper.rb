@@ -68,7 +68,7 @@ module ApplicationHelper
 
   def tip_tag_list_for(tip)
     tip.tag_list.map do |tag|
-      link_to "tag", "#", class: "tag badge"
+      link_to tag, "#", class: "tag badge"
     end.join.html_safe
   end
 

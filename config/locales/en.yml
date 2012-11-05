@@ -6,8 +6,13 @@ en:
   menu:
     home: Tips
     new: Post a tip
+    subscriptions: Subscriptions
   tips:
     new:
       title: Post a new Tip
     index:
       title: Tips list
+  subscriptions:
+    index:
+      subscribe: Subscribe to the daily email
+      unsubscribe: Unsubscribe from the daily email

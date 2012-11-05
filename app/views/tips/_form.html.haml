@@ -3,7 +3,7 @@
   = simple_nested_form_for @tip do |f|
     .span7
       = f.input :title, input_html: {class: "span7"}
-      = f.input :content, input_html: {class: "span7", rows: 10}
+      = f.input :content, required: false, input_html: {class: "span7", rows: 10}
       = f.submit class: "btn btn-primary btn-large"
       = button_link_to t("back"), root_path, class: "cancel"
 

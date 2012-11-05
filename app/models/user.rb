@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
   has_many :tips, foreign_key: "author_id"
+  has_many :subscriptions
 end

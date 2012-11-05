@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121104220843) do
+ActiveRecord::Schema.define(:version => 20121105220331) do
 
   create_table "links", :force => true do |t|
     t.integer  "tip_id"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(:version => 20121104220843) do
   end
 
   add_index "links", ["tip_id"], :name => "index_links_on_tip_id"
+
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "state",      :default => "active"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
+  add_index "subscriptions", ["state"], :name => "index_subscriptions_on_state"
+  add_index "subscriptions", ["user_id"], :name => "index_subscriptions_on_user_id"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

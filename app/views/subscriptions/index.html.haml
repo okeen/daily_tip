@@ -1,0 +1,5 @@
+- if @subscriptions.any?
+  - @subscriptions.each do |subscription|
+    = link_to t(".unsubscribe"), [:user, subscription], class: "btn btn-danger", method: :delete
+- else
+  = link_to t(".subscribe"), [:user, :subscriptions], class: "btn btn-success", method: :post
