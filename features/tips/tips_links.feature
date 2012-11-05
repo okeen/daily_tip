@@ -3,6 +3,7 @@ Feature: Tips Links
   as a user
   I want to add links to the tips
 
+  @wip
   @javascript
   Scenario: Set tip links
     Given a logged user

@@ -6,3 +6,8 @@ en:
   menu:
     home: Tips
     new: Post a tip
+  tips:
+    new:
+      title: Post a new Tip
+    index:
+      title: Tips list

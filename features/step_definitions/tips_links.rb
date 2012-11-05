@@ -1,5 +1,11 @@
 When /^I can create a new tip with links on it$/ do
-  step "I set the tip basic info"
+  click_link "Post a tip"
+
+  pending "can't set the editor's value with the tests for now"
+  fill_in "Title", with: "A cool tip"
+  fill_in "tip_content", with: Faker::Lorem.paragraph
+  page.execute_script "$('#tip_content').val('#{Faker::Lorem.paragraph}')"
+
   step "I can set links on it"
   click_button "Create Tip"
 end

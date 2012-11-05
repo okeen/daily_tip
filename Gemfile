@@ -27,6 +27,8 @@ gem "tabs_on_rails"
 
 gem 'acts-as-taggable-on'
 
+gem "bootstrap-wysihtml5-rails"
+
 gem "pg"
 
 group :development do

@@ -1,18 +1,26 @@
-%p
-  %b Title:
-  = @tip.title
-%p
-  %b Content:
-  = @tip.content
+- content_for :title do
+  - @tip.title
+
+= link_to t("back"), tips_path, class: "pull-right btn btn-inverse"
 
 %p
-  %b Author:
-  = @tip.author.email
+  = t(".created_by")
+  %span.tip_author= @tip.author.email
+  = t(".created_on")
+  = @tip.created_at.to_s(:short)
 
-= tip_tag_list_for(@tip)
 
-= tip_links_for(@tip)
 
-= link_to(t("edit"), edit_tip_path(@tip)) if @tip.author == current_user
+%p
+  = Tip.human_attribute_name :tags
+  = tip_tag_list_for(@tip)
 
-= link_to t("back"), tips_path
+%br
+.well
+  %p= raw @tip.content
+
+  %h3= Tip.human_attribute_name :links
+  = tip_links_for(@tip)
+
+= button_link_to(t("edit"), edit_tip_path(@tip), class: "primary") if @tip.author == current_user
+
