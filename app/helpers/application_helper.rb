@@ -1,7 +1,8 @@
 module ApplicationHelper
 
   def render_flash
-    flash_class = {notice: "alert-success", alert: "alert-error"}
+    flash_class = {notice: "alert-success", alert: "alert-error", error: "alert-error"}
+    logger.debug flash.inspect
 
     flash.map do |name, msg|
       content_tag :div,
@@ -68,6 +69,12 @@ module ApplicationHelper
   def tip_tag_list_for(tip)
     tip.tag_list.map do |tag|
       link_to "tag", "#", class: "tag badge"
+    end.join.html_safe
+  end
+
+  def tip_links_for(tip)
+    tip.links.map do |tag|
+      link_to raw(tag.url), tag.url, class: "tip_link btn btn-link"
     end.join.html_safe
   end
 end

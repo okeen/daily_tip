@@ -1,5 +1,27 @@
-= simple_form_for @tip do |f|
-  = f.input :title
-  = f.input :content
-  = f.input :tag_list
-  = f.submit
+.row
+
+  = simple_nested_form_for @tip do |f|
+    .span7
+      = f.input :title, input_html: {class: "span7"}
+      = f.input :content, input_html: {class: "span7", rows: 10}
+      = f.submit class: "btn btn-primary btn-large"
+      = button_link_to t("back"), root_path, class: "cancel"
+
+    .span5
+      = f.input :tag_list, input_html: {class: "span5"}
+
+      %fieldset#tip_links
+        %legend= t(".links")
+
+        = f.fields_for :links, @tip.links do |links_fields|
+          = links_fields.label :url, Link.human_attribute_name(:url)
+          = links_fields.text_field :url, class: "span5"
+
+          = links_fields.label :description, Link.human_attribute_name(:description)
+          = links_fields.text_area :description, class: "span5", rows: 3
+
+          = links_fields.link_to_remove t(".remove_link"), class: "btn"
+          %hr
+
+        = f.link_to_add t(".add_link"), :links, class: "btn btn-success"
+

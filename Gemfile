@@ -20,6 +20,7 @@ gem "haml-rails"
 
 gem 'inherited_resources'
 gem 'simple_form'
+gem 'nested_form'
 gem 'kaminari'
 
 gem "tabs_on_rails"

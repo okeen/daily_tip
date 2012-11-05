@@ -11,6 +11,8 @@
 
 = tip_tag_list_for(@tip)
 
-= link_to('Edit', edit_tip_path(@tip)) if @tip.author == current_user
+= tip_links_for(@tip)
 
-= link_to 'Back', tips_path
+= link_to(t("edit"), edit_tip_path(@tip)) if @tip.author == current_user
+
+= link_to t("back"), tips_path

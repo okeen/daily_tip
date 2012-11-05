@@ -1,0 +1,8 @@
+en:
+  activerecord:
+    attributes:
+      tip:
+        title: Title
+      link:
+        url: Url
+        description: Description
