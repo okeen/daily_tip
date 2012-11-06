@@ -1,12 +1,19 @@
 When /^I can create a new tip with links on it$/ do
   click_link "Post a tip"
 
-  pending "can't set the editor's value with the tests for now"
   fill_in "Title", with: "A cool tip"
-  fill_in "tip_content", with: Faker::Lorem.paragraph
-  page.execute_script "$('#tip_content').val('#{Faker::Lorem.paragraph}')"
+
+  sleep 5
+  within_frame 0 do
+    #fill_in "tip_content", with: Faker::Lorem.paragraph
+    body = page.find "body"
+
+    body.set Faker::Lorem.paragraph
+    body.trigger 'keydown'
+  end
 
   step "I can set links on it"
+  page.driver.render "tmp/shit.png"
   click_button "Create Tip"
 end
 
