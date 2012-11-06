@@ -1,0 +1,7 @@
+%h1= t ".your_daily_tip"
+
+%h3= @tip.title
+
+= raw @tip.content
+
+= link_to t(".view_details"), tip_url(@tip)
