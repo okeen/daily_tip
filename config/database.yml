@@ -36,7 +36,7 @@ production:
   database: daily_tip_production
   pool: 5
   username: root
-  password:
+  password: aaaa
 
 cucumber:
   <<: *test
