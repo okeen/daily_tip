@@ -19,9 +19,13 @@ gem "haml", ">= 3.0.0"
 gem "haml-rails"
 
 gem 'inherited_resources'
+gem "has_scope"
+
 gem 'simple_form'
 gem 'nested_form'
+
 gem 'kaminari'
+gem 'kaminari-bootstrap'
 
 gem "tabs_on_rails"
 

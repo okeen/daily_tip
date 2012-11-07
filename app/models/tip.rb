@@ -3,6 +3,8 @@ class Tip < ActiveRecord::Base
 
   acts_as_taggable
 
+  paginates_per 10
+
   has_many :links
   belongs_to :author, class_name: User
 
