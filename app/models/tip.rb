@@ -3,7 +3,7 @@ class Tip < ActiveRecord::Base
 
   acts_as_taggable
 
-  paginates_per 10
+  paginates_per 20
 
   has_many :links
   belongs_to :author, class_name: User
@@ -16,5 +16,10 @@ class Tip < ActiveRecord::Base
     beginining_of_day = Date.today.beginning_of_day
     end_of_day = Date.today.end_of_day
     where("created_at between ? and ?", beginining_of_day, end_of_day )
+  }
+
+  scope :search, lambda {|query|
+    search_term = "%#{query.downcase}%"
+    where("lower(title) LIKE ? or lower(content) LIKE ?", search_term, search_term)
   }
 end

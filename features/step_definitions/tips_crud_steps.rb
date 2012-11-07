@@ -43,3 +43,19 @@ Then /^I can see details about the tips$/ do
   page.should have_content "A simple tip content"
   page.should have_content "user@daily_tip.dev"
 end
+
+When /^some existing tips to search for$/ do
+  create :tip, title: "search for me", content: "And for me"
+  create :tip, title: "don't find me", content: "Please"
+end
+
+When /^I search for tips using some keywords$/ do
+  visit "/"
+  fill_in "q", with: "search for me"
+  click_button "search"
+end
+
+Then /^I can see details about the tips found$/ do
+  page.should have_selector ".tip", content: "search for me"
+  page.should_not have_content "don't find me"
+end

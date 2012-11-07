@@ -2,6 +2,7 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  search: search
   logo: Daily Tip
   menu:
     home: Tips
@@ -12,6 +13,7 @@ en:
       title: Post a new Tip
     index:
       title: Tips list
+      search_terms: Enter your query...
     show:
       created_by: By
       created_on: "on"

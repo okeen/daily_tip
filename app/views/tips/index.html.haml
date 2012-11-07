@@ -1,9 +1,14 @@
 .row
-  %ol#tips.span7
+  %ol#tips.span8
     = render @tips
 
-  .span5
-    Search here
+  .span4
+    .well
+      %h4= t("search").capitalize
+      = simple_form_for :tip, url: [:tips], method: :get do |f|
+        = f.input :q, label: false, placeholder: t(".search_terms"), wrapper: false,
+          input_html: {value: params[:q], class: "span3", name: "q"}
+        = f.submit "search", class: "btn btn-inverse"
 
   .span12
     = paginate collection
