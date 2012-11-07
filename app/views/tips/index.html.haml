@@ -4,11 +4,18 @@
 
   .span4
     .well
-      %h4= t("search").capitalize
+      %h4= t("search")
       = simple_form_for :tip, url: [:tips], method: :get do |f|
         = f.input :q, label: false, placeholder: t(".search_terms"), wrapper: false,
           input_html: {value: params[:q], class: "span3", name: "q"}
         = f.submit "search", class: "btn btn-inverse"
+
+      %br
+
+      %h4= t(".tag_cloud")
+      #tag_cloud
+        - tag_cloud @tags, tag_cloud_classes do |tag, css_class|
+          = link_to_tag_tips tag, class: css_class
 
   .span12
     = paginate collection

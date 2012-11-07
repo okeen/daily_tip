@@ -2,7 +2,7 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  search: search
+  search: Search
   logo: Daily Tip
   menu:
     home: Tips
@@ -17,6 +17,8 @@ en:
     show:
       created_by: By
       created_on: "on"
+    tagged:
+      title: Filtering by tag
   links:
     link:
       show_inline: Preview

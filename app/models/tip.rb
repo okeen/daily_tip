@@ -22,4 +22,6 @@ class Tip < ActiveRecord::Base
     search_term = "%#{query.downcase}%"
     where("lower(title) LIKE ? or lower(content) LIKE ?", search_term, search_term)
   }
+
+  scope :by_date, order("created_at desc")
 end

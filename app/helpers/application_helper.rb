@@ -48,7 +48,6 @@ module ApplicationHelper
                        'data-original-title' => "#{formated_title}",
                        'data-placement' => options[:placement],
                        'rel' => 'popover'
-
     icon
   end
 
@@ -64,17 +63,5 @@ module ApplicationHelper
     text = content_for(:title)
     text = t("#{controller_name}.#{action_name}.title") if text.blank?
     content_tag :h1, text, class: "page_title"
-  end
-
-  def tip_tag_list_for(tip)
-    tip.tag_list.map do |tag|
-      link_to tag, "#", class: "tag badge"
-    end.join.html_safe
-  end
-
-  def tip_link(link)
-    icon = "search"
-    content = content_with_icon link.url, icon
-    link_to raw(content), link.url, class: "tip_link btn-link span9"
   end
 end
