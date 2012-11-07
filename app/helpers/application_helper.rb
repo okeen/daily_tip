@@ -72,9 +72,9 @@ module ApplicationHelper
     end.join.html_safe
   end
 
-  def tip_links_for(tip)
-    tip.links.map do |tag|
-      link_to raw(tag.url), tag.url, class: "tip_link btn btn-link"
-    end.join.html_safe
+  def tip_link(link)
+    icon = "search"
+    content = content_with_icon link.url, icon
+    link_to raw(content), link.url, class: "tip_link btn-link span9"
   end
 end

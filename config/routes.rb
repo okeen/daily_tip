@@ -4,10 +4,12 @@ DailyTip::Application.routes.draw do
   root to: "tips#index"
 
   resources :tips
+
   resource :user, except: :all do
     resources :subscriptions, except: [:new, :show, :edit]
   end
 
+  get "readability/:id" => "readability#show"
   devise_for :users
 
 end

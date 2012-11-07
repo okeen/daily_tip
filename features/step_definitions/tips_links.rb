@@ -35,3 +35,26 @@ When /^I can set links on it$/ do
     fill_in "Url", with: @link_list[0]
   end
 end
+
+Given /^some existing tips with links$/ do
+  @link = create :link
+  @tip = @link.tip
+end
+
+When /^I go to the first tip page$/ do
+ visit "/tips/#{@tip.id}"
+end
+
+When /^I preview the first link$/ do
+  Link.any_instance.stubs(:to_readable_article).returns "<p>look at this</p>"
+  within ".link" do
+    click_link "Preview"
+  end
+end
+
+Then /^I should see the link page content previewed$/ do
+  within ".link" do
+    page.should have_selector ".link_close"
+    page.should have_selector "p", content: "look at this"
+  end
+end

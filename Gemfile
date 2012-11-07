@@ -28,6 +28,7 @@ gem "tabs_on_rails"
 gem 'acts-as-taggable-on'
 
 gem "bootstrap-wysihtml5-rails"
+gem "ruby-readability", :require => 'readability'
 
 gem "pg"
 
@@ -49,6 +50,7 @@ group :development, :test do
   gem 'debugger'
   gem 'pry'
 
+  gem "fakeweb"
   gem 'guard'
   gem 'guard-spork'
   gem 'guard-rspec'

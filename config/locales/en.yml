@@ -12,6 +12,13 @@ en:
       title: Post a new Tip
     index:
       title: Tips list
+    show:
+      created_by: By
+      created_on: "on"
+  links:
+    link:
+      show_inline: Preview
+
   subscriptions:
     index:
       subscribe: Subscribe to the daily email

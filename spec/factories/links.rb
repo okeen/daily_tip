@@ -2,9 +2,9 @@
 
 FactoryGirl.define do
   factory :link do
-    tip nil
-    url "MyString"
-    link_type "MyString"
-    description "MyText"
+    association :tip, factory: :tip
+    url { Faker::Internet.url }
+    link_type "regular"
+    description { Faker::Lorem.paragraph 1 }
   end
 end
