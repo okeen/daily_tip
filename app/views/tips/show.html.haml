@@ -1,26 +1,29 @@
 - content_for :title do
   - @tip.title
+= javascript_include_tag "disqus"
 
-= link_to t("back"), tips_path, class: "pull-right btn btn-inverse"
+.row
+  %p.span10
+    = t(".created_by")
+    %span.tip_author= @tip.author.email
+    = t(".created_on")
+    = @tip.created_at.to_s(:short)
+  .span2
+    = link_to t("back"), tips_path, class: "btn btn-inverse"
+    = link_to(t("edit"), edit_tip_path(@tip), class: "btn btn-alert") if @tip.author == current_user
 
-%p
-  = t(".created_by")
-  %span.tip_author= @tip.author.email
-  = t(".created_on")
-  = @tip.created_at.to_s(:short)
 
+  %p.span12
+    = Tip.human_attribute_name :tags
+    = tip_tag_list_for(@tip)
 
+  %br
+  .span12
+    .well
+      %p= raw @tip.content
 
-%p
-  = Tip.human_attribute_name :tags
-  = tip_tag_list_for(@tip)
-
-%br
-.well
-  %p= raw @tip.content
 
   %h3= Tip.human_attribute_name :links
-  = tip_links_for(@tip)
-
-= button_link_to(t("edit"), edit_tip_path(@tip), class: "primary") if @tip.author == current_user
-
+  = render @tip.links
+  %hr
+#disqus_thread

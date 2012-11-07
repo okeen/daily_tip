@@ -1,5 +1,3 @@
-
-
 namespace :subscriptions do
   desc "Delivers the daily tip emails"
   task daily_tip: :environment  do

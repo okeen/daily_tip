@@ -8,3 +8,36 @@
     }
   }
 }
+
+.link {
+  margin: {top: 30px; bottom: 40px;}
+
+  .link_iframe_container {
+    margin: {top: 15px; bottom: 10px;}
+    padding: 5px;
+    border: 2px solid #d3d3d3;
+    border-radius: 5px;
+  }
+}
+
+#tag_cloud {
+  .tag_cloud_tag{
+    margin: 5px;
+  }
+
+  $base_size: 1em;
+  $size_increment: 0.3em;
+
+  .tag_level1{
+     font-size: $base_size;
+  }
+  .tag_level2{
+    font-size: $base_size + $size_increment;
+  }
+  .tag_level3{
+    font-size: $base_size + 2 * $size_increment;
+  }
+  .tag_level4{
+    font-size: $base_size + 3 * $size_increment;
+  }
+}

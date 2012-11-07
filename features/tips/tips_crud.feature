@@ -12,3 +12,11 @@ Feature: Tips CRUD
     Given a logged user
     And some existing tips
     Then I can see details about the tips
+
+  Scenario: Tip Search
+    Given a logged user
+    And some existing tips
+    And some existing tips to search for
+    When I search for tips using some keywords
+    Then I can see details about the tips found
+

@@ -2,6 +2,7 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  search: Search
   logo: Daily Tip
   menu:
     home: Tips
@@ -12,7 +13,19 @@ en:
       title: Post a new Tip
     index:
       title: Tips list
+      search_terms: Enter your query...
+    show:
+      created_by: By
+      created_on: "on"
+    tagged:
+      title: Filtering by tag
+  links:
+    link:
+      show_inline: Preview
+
   subscriptions:
     index:
+      title: Subscribe to your daily tip
+      intro: Activate a subscription to receive a daily email with a tip for you. Learn something a day!
       subscribe: Subscribe to the daily email
       unsubscribe: Unsubscribe from the daily email

@@ -108,6 +108,7 @@ GEM
       railties (>= 3.0.0)
     faker (1.1.2)
       i18n (~> 0.5)
+    fakeweb (1.3.0)
     ffi (1.1.5)
     gherkin (2.11.5)
       json (>= 1.4.6)
@@ -127,6 +128,7 @@ GEM
       guard (>= 1.1)
       spork (>= 0.8.4)
       sys-proctable
+    guess_html_encoding (0.0.6)
     haml (3.1.7)
     haml-rails (0.3.5)
       actionpack (>= 3.1, < 4.1)
@@ -147,6 +149,9 @@ GEM
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    kaminari-bootstrap (0.1.3)
+      kaminari (>= 0.13.0)
+      rails
     launchy (2.1.2)
       addressable (~> 2.3)
     libwebsocket (0.1.5)
@@ -213,6 +218,9 @@ GEM
       activesupport (>= 3.0)
       railties (>= 3.0)
       rspec (~> 2.11.0)
+    ruby-readability (0.5.5)
+      guess_html_encoding (>= 0.0.4)
+      nokogiri (>= 1.4.2)
     rubyzip (0.9.9)
     sass (3.2.1)
     sass-rails (3.2.5)
@@ -272,15 +280,18 @@ DEPENDENCIES
   email_spec
   factory_girl_rails (~> 4.0)
   faker
+  fakeweb
   guard
   guard-cucumber
   guard-rspec
   guard-spork
   haml (>= 3.0.0)
   haml-rails
+  has_scope
   inherited_resources
   jquery-rails
   kaminari
+  kaminari-bootstrap
   mail_view!
   mocha
   mysql2
@@ -289,6 +300,7 @@ DEPENDENCIES
   pry
   rails (= 3.2.6)
   rspec-rails
+  ruby-readability
   sass-rails (~> 3.2.4)
   shoulda-matchers
   simple_form
