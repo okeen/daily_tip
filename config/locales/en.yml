@@ -25,5 +25,7 @@ en:
 
   subscriptions:
     index:
+      title: Subscribe to your daily tip
+      intro: Activate a subscription to receive a daily email with a tip for you. Learn something a day!
       subscribe: Subscribe to the daily email
       unsubscribe: Unsubscribe from the daily email
