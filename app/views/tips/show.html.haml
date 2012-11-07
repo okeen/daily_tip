@@ -1,5 +1,6 @@
 - content_for :title do
   - @tip.title
+= javascript_include_tag "disqus"
 
 .row
   %p.span10
@@ -24,4 +25,5 @@
 
   %h3= Tip.human_attribute_name :links
   = render @tip.links
-
+  %hr
+#disqus_thread
