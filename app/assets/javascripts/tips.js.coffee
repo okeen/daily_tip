@@ -8,9 +8,9 @@ $ ->
     link_id = container_link.data('link_id')
     console.log "Opening #{link_id} inline"
 
-    iframe_container = container_link.find ".link_iframe_container"
+    iframe_container = container_link.next().find ".link_iframe_container"
     iframe_container.html("Loading...")
-    iframe_container.show()
+    iframe_container.closest("tr").show()
 
     $.get "/readability/#{link_id}", {}, (response, status) =>
 
@@ -20,10 +20,11 @@ $ ->
       close_button.click (e)=>
         e.preventDefault()
         close_inline_button = $ e.target
-        container_link = $(close_inline_button).closest(".link")
-        iframe_container = container_link.find ".link_iframe_container"
-        iframe_container.html("")
-        iframe_container.hide()
+        container_link = $(close_inline_button).closest(".readability_row")
+        container_link.hide()
+#        iframe_container = container_link.next().find ".link_iframe_container"
+#        iframe_container.html("")
+#        iframe_container.closest("tr").hide()
 
       close_button.removeClass "hide"
       iframe_container.children().before close_button

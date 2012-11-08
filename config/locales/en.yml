@@ -2,6 +2,8 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  sign_in: Sign in
+  sign_up: Sign up
   search: Search
   logo: Daily Tip
   menu:
@@ -29,3 +31,11 @@ en:
       intro: Activate a subscription to receive a daily email with a tip for you. Learn something a day!
       subscribe: Subscribe to the daily email
       unsubscribe: Unsubscribe from the daily email
+
+  registrations:
+    new:
+      title: Sign Up
+
+  sessions:
+    new:
+      title: Log in  to Daily Tip

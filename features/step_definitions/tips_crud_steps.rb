@@ -2,8 +2,8 @@ Given /^a logged user$/ do
   @user = create :user, email: "user@daily_tip.dev"
 
   visit "/users/sign_in"
-  fill_in "Email", with: "user@daily_tip.dev"
-  fill_in "Password", with: "monkey"
+  fill_in "user_email", with: "user@daily_tip.dev"
+  fill_in "user_password", with: "monkey"
   click_button "Sign in"
 
   page.should have_selector ".alert-success", content: "Signed in successfully"
