@@ -11,6 +11,12 @@ en:
     new: Post a tip
     subscriptions: Subscriptions
   tips:
+    home:
+      title: Learn awesome tips
+      or_more: ...Daily!
+      intro: Daily Tip lets you share those little things you learn every day with your colleagues, as well as receive emails with tips selections for you.
+      show_me_more: Show me some tips!
+      register: Try it now >>
     new:
       title: Post a new Tip
     index:

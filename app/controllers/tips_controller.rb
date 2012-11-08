@@ -21,6 +21,10 @@ class TipsController < InheritedResources::Base
     render :index
   end
 
+  def home
+    @tips = Tip.by_date.limit(10)
+  end
+
   protected
 
   def set_new_tab

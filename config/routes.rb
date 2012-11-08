@@ -1,7 +1,7 @@
 DailyTip::Application.routes.draw do
   get "subscriptions/index"
 
-  root to: "tips#index"
+  root to: "tips#home"
 
   resources :tips do
     collection do

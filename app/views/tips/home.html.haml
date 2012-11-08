@@ -1,0 +1,29 @@
+- content_for :title, :none
+.row
+  .hero-unit.span6
+    .row-fluid
+      .page-header
+        %h1
+          =t(".title")
+          %small= t(".or_more")
+      %br
+      %br
+      %p= t(".intro")
+      %br
+      .span6
+        %br
+        %br
+
+        = button_link_to t(".register"), new_user_session_path, class: "btn btn-primary btn-large"
+      = image_tag "bombilla.jpg", class: "span5"
+  %br
+  #last_tips_container.span4.offset1
+    %h3.pagination-centered Last tips
+    %table#last_tips.table-striped.table-bordered
+      - @tips.each do |tip|
+        %tr
+          %td
+            = link_to tip.title, tip, class: ""
+    %br
+    .pagination-centered
+      = button_link_to t(".show_me_more"), [:tips], class: "btn btn-inverse btn-large"

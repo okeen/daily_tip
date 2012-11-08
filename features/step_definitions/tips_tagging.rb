@@ -20,7 +20,7 @@ When /^some tagged tips with "([^"]*)"$/ do |tag|
 end
 
 Then /^I see the "([^"]*)" on tag cloud for the tips$/ do |tag|
-  visit "/"
+  visit "/tips"
   within "#tag_cloud" do
     page.should have_selector "a", content: tag
   end
