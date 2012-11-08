@@ -1,18 +1,22 @@
 .row
-  %ol#tips.span8
+  %table#tips.table.table-striped.table-bordered
     = render @tips
 
   .span4
     .well
       %h4= t("search")
-      = simple_form_for :tip, url: [:tips], method: :get do |f|
+      %br
+      = simple_form_for :tip, url: [:tips], method: :get, html: {class:'form-search'} do |f|
         = f.input :q, label: false, placeholder: t(".search_terms"), wrapper: false,
-          input_html: {value: params[:q], class: "span3", name: "q"}
-        = f.submit "search", class: "btn btn-inverse"
+          input_html: {value: params[:q], class: "span2 search-query", name: "q"}
+        = f.submit "search", class: "btn btn-inverse pull-right"
+      %br
 
+      %hr
       %br
 
       %h4= t(".tag_cloud")
+      %br
       #tag_cloud
         - tag_cloud @tags, tag_cloud_classes do |tag, css_class|
           = link_to_tag_tips tag, class: css_class

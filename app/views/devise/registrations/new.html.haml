@@ -1,0 +1,16 @@
+.row
+  .span4
+    = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+      .form-inputs
+        = f.input :email, label: false, :required => true, :autofocus => true, placeholder: User.human_attribute_name(:email)
+        = f.input :password, label: false, :required => true, placeholder: User.human_attribute_name(:password)
+        = f.input :password_confirmation, label: false, :required => true,
+          placeholder: User.human_attribute_name(:password_confirmation)
+
+        %br
+        = f.button :submit, t("sign_up"), class: "btn btn-primary btn-large"
+
+  #register_panel.span4.offset2.well
+    %h3= t("sign_in")
+    %p= t(".already_registered_question")
+    = button_link_to t("sign_in"), new_session_path(resource_name), class: "inverse"

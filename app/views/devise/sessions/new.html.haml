@@ -1,0 +1,20 @@
+.row
+  .span4
+    = simple_form_for resource, as: resource_name, url: session_path(resource_name) do |f|
+      .form-inputs
+        = f.input :email, label: false, :required => true, :autofocus => true, placeholder: User.human_attribute_name(:email)
+        = f.input :password, label: false, :required => true, placeholder: User.human_attribute_name(:password)
+
+        = f.input :remember_me, wrapper: :checkbox, as: :boolean, label: t(".remember_me"),
+          label_html: {class: :checkbox} if devise_mapping.rememberable?
+
+        %br
+        = f.button :submit, t("sign_in"), class: "btn btn-primary btn-large"
+        %br
+        %br
+        = link_to t(".password_lost"), new_password_path(resource_name)
+
+  #register_panel.span4.offset2.well
+    %h3= t("sign_up")
+    %p= t(".create_an_account")
+    = button_link_to "Sign up", new_registration_path(resource_name), class: "inverse"

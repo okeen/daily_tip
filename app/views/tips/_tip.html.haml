@@ -1,6 +1,7 @@
-%li.tip.clearfix{id: "tip_#{tip.id}"}
-  .tip_resume.span6
-    = tip.title
-    = tip_tag_list_for tip
+%tr.tip{id: "tip_#{tip.id}"}
+  %td
+    .tip_resume.pull-left
+      = tip.title
+      = tip_tag_list_for tip
 
-  = link_to t("show"), tip, class: "pull-right btn btn-primary"
+    = link_to t("show"), tip, class: "pull-right btn btn-primary"

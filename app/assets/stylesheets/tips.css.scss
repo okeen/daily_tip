@@ -1,10 +1,14 @@
 #tips {
-  li.tip {
-    margin: {top: 5px; bottom: 5px;}
-    list-style: none;
-    background: #d3d3d3;
+  width: 600px;
+  float: left;
+  margin: {left: 20px; right: 20px}
+  .tip {
+    td {padding: 20px;}
     .tip_resume {
       padding-top: 5px;
+    }
+    .tag {
+      margin: {left: 3px; right: 3px;}
     }
   }
 }
@@ -23,10 +27,11 @@
 #tag_cloud {
   .tag_cloud_tag{
     margin: 5px;
+    display: inline-block;
   }
 
   $base_size: 1em;
-  $size_increment: 0.3em;
+  $size_increment: 0.4em;
 
   .tag_level1{
      font-size: $base_size;
