@@ -35,6 +35,7 @@ gem "bootstrap-wysihtml5-rails"
 gem "ruby-readability", :require => 'readability'
 
 gem "pg"
+gem "unicorn"
 
 group :development do
   gem 'mail_view', git: 'https://github.com/37signals/mail_view.git'
