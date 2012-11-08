@@ -55,6 +55,6 @@ end
 Then /^I should see the link page content previewed$/ do
   within ".link" do
     page.should have_selector ".link_close"
-    page.should have_selector "p", content: "look at this"
+    page.should have_content "look at this"
   end
 end

@@ -23,7 +23,10 @@
       %p= raw @tip.content
 
 
-  %h3= Tip.human_attribute_name :links
-  = render @tip.links
+  .span12
+    %h3= Tip.human_attribute_name :links
+    %table#tip_links.table.table-bordered.table-striped
+      = render @tip.links
+
   %hr
 #disqus_thread
