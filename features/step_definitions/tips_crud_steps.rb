@@ -50,7 +50,7 @@ When /^some existing tips to search for$/ do
 end
 
 When /^I search for tips using some keywords$/ do
-  visit "/"
+  visit "/tips"
   fill_in "q", with: "search for me"
   click_button "search"
 end
