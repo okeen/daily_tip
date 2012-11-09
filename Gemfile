@@ -39,6 +39,8 @@ gem 'activerecord-reputation-system'
 gem "pg"
 gem "unicorn"
 
+gem 'rack-google-analytics', group: :production
+
 group :development do
   gem 'mail_view', git: 'https://github.com/37signals/mail_view.git'
 end
