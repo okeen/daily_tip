@@ -33,7 +33,7 @@ class Tip < ActiveRecord::Base
     joins('left join rs_reputations on tips.id = rs_reputations.target_id').
     where("rs_reputations.target_type = 'Tip'").
     where("rs_reputations.reputation_name = 'votes'").
-    where("rs_reputations.active = 1").
+    where(rs_reputations: {active: true}).
     order('votes desc')
   }
 
