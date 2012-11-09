@@ -41,7 +41,8 @@ Given /^some existing tips with links$/ do
 end
 
 When /^I go to the first tip page$/ do
- visit "/tips/#{@tip.id}"
+  @tip||= Tip.first
+  visit "/tips/#{@tip.id}"
 end
 
 When /^I preview the first link$/ do

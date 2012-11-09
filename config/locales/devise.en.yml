@@ -56,3 +56,12 @@ en:
         subject: 'Reset password instructions'
       unlock_instructions:
         subject: 'Unlock Instructions'
+  tips:
+    navbar:
+      by_date: "Recent"
+      by_popularity: "Popular"
+    reputation:
+      up: "Good"
+      down: "Bad"
+  reputation:
+    vote_success: "Thanks for you vote"

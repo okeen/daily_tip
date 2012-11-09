@@ -5,6 +5,9 @@ class Tip < ActiveRecord::Base
 
   paginates_per 20
 
+  has_reputation :votes,
+                 :source => :user
+
   has_many :links
   belongs_to :author, class_name: User
 
@@ -24,4 +27,18 @@ class Tip < ActiveRecord::Base
   }
 
   scope :by_date, order("created_at desc")
+
+  scope :popular, lambda {
+    select('tips.*, coalesce(value, 0) as votes').
+    joins('left join rs_reputations on tips.id = rs_reputations.target_id').
+    where("rs_reputations.target_type = 'Tip'").
+    where("rs_reputations.reputation_name = 'votes'").
+    where("rs_reputations.active = 1").
+    order('votes desc')
+  }
+
+  #def self.popular
+  #  self.find_with_reputation(:votes, :all, order: "votes desc")
+  #
+  #end
 end

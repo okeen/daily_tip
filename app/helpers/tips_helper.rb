@@ -20,4 +20,23 @@ module TipsHelper
     klazz << " tag_cloud_tag"
     link_to tag, tagged_tips_path(tag.name), options.merge(class: klazz)
   end
+
+  def tip_vote_buttons_for(tip, evaluation)
+    positive_vote_exists = evaluation.present? && evaluation.value > 0
+    negative_vote_exists = evaluation.present? && evaluation.value < 0
+    [
+       vote_button_for(tip, :up, positive_vote_exists),
+       vote_button_for(tip, :down, negative_vote_exists)
+
+    ].join.html_safe
+  end
+
+  def vote_button_for(tip, vote, active = false)
+    klazz = "vote_button btn btn-small "
+    popularity_class = vote == :up ? "popularity_positive " : "popularity_negative "
+    klazz << popularity_class
+    klazz << "active" if active
+    button_tag t("tips.reputation.#{vote.to_s}"), class: klazz,
+               data: {target: tip_votes_path(tip, vote: vote.to_s)}
+  end
 end

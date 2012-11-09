@@ -36,6 +36,7 @@ GEM
       activesupport (= 3.2.6)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
+    activerecord-reputation-system (2.0.1)
     activeresource (3.2.6)
       activemodel (= 3.2.6)
       activesupport (= 3.2.6)
@@ -272,6 +273,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-reputation-system
   acts-as-taggable-on
   bootstrap-sass (~> 2.1.0.0)
   bootstrap-wysihtml5-rails

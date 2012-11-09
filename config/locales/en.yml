@@ -7,7 +7,7 @@ en:
   search: Search
   logo: Daily Tip
   menu:
-    home: Tips
+    tips: Tips
     new: Post a tip
     subscriptions: Subscriptions
   tips:
@@ -27,6 +27,8 @@ en:
       created_on: "on"
     tagged:
       title: Filtering by tag
+    popular:
+      title: Popular Tips
   links:
     link:
       show_inline: Preview

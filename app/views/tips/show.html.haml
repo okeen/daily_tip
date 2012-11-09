@@ -14,8 +14,12 @@
 
 
   %p.span12
-    = Tip.human_attribute_name :tags
-    = tip_tag_list_for(@tip)
+    .row
+      .span6
+        = Tip.human_attribute_name :tags
+        = tip_tag_list_for(@tip)
+      .span6
+        = render "tip_reputation" if current_user.present?
 
   %br
   .span12

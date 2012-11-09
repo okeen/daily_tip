@@ -4,7 +4,7 @@
       = link_to t("logo"), root_path, class: "brand"
       .nav-collapse
         = tabs_tag open_tabs: {class: 'nav'}, builder: MenuBuilder do |tab|
-          = tab.home [:tips]
+          = tab.tips [:tips]
           = tab.new  [:new, :tip]
           = tab.subscriptions  [:user, :subscriptions]
 

@@ -6,4 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :tips, foreign_key: "author_id"
   has_many :subscriptions
+
+  has_many :evaluations, class_name: ReputationSystem::Evaluation, as: :source
+
 end
