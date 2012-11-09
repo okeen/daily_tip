@@ -74,5 +74,5 @@ DailyTip::Application.configure do
       :domain         => ENV['SENDGRID_DOMAIN']
   }
 
-  config.middleware.use("Rack::GoogleAnalytics", :web_property_id => "'UA-36224410-1")
+  config.middleware.use("Rack::GoogleAnalytics", tracker: "'UA-36224410-1")
 end
