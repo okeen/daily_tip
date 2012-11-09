@@ -1,0 +1,6 @@
+%h4= t("search")
+%br
+= simple_form_for :tip, url: [:tips], method: :get, html: {class:'form-search'} do |f|
+  = f.input :q, label: false, placeholder: t("tips.index.search_terms"), wrapper: false,
+    input_html: {value: params[:q], class: "span2 search-query", name: "q"}
+  = f.submit "search", class: "btn btn-inverse pull-right"

@@ -64,9 +64,6 @@ end
 When /^I sort the tips by popularity$/ do
   visit "/tips"
   click_link "Popular"
-  Rails.logger.debug "TIPS:: #{@tips.map{|t| [t.id, t.reputation_for(:votes)]}}"
-  save_and_open_page
-
 end
 
 Then /^I can see the tips ordered by popularity$/ do

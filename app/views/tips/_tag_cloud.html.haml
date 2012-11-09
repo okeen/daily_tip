@@ -1,0 +1,5 @@
+%h4= t("tag_cloud")
+%br
+#tag_cloud
+  - tag_cloud @tags, tag_cloud_classes do |tag, css_class|
+    = link_to_tag_tips tag, class: css_class
