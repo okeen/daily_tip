@@ -2,35 +2,36 @@
   - @tip.title
 = javascript_include_tag "disqus"
 
-.row
-  %p.span10
-    = t(".created_by")
-    %span.tip_author= @tip.author.email
-    = t(".created_on")
-    = @tip.created_at.to_s(:short)
-  .span2
-    = link_to t("back"), tips_path, class: "btn btn-inverse"
-    = link_to(t("edit"), edit_tip_path(@tip), class: "btn btn-alert") if @tip.author == current_user
+#main_row.row
+  %br
+  .span9
+    %p
+      = t(".created_by")
+      %span.tip_author= @tip.author.email
+      = t(".created_on")
+      = @tip.created_at.to_s(:short)
+    %p
+      %span= Tip.human_attribute_name :tags
+      = tip_tag_list_for(@tip)
+    %br
+  #tip_votes.span3.pagination-right
+    = render "tip_reputation" if current_user.present?
 
-
-  %p.span12
-    .row
-      .span6
-        = Tip.human_attribute_name :tags
-        = tip_tag_list_for(@tip)
-      .span6
-        = render "tip_reputation" if current_user.present?
+  = link_to(t("edit"), edit_tip_path(@tip),id: "edit_tip_btn", class: "btn btn-alert") if @tip.author == current_user
 
   %br
   .span12
     .well
       %p= raw @tip.content
 
+  - unless @tip.links.empty?
+
+    .span12
+      %h3= Tip.human_attribute_name :links
+
+      %table#tip_links.table.table-bordered.table-striped
+        = render @tip.links
+      %hr
 
   .span12
-    %h3= Tip.human_attribute_name :links
-    %table#tip_links.table.table-bordered.table-striped
-      = render @tip.links
-
-  %hr
-#disqus_thread
+    #disqus_thread

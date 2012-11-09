@@ -65,3 +65,4 @@ en:
       down: "Bad"
   reputation:
     vote_success: "Thanks for you vote"
+  votes: "Votes"

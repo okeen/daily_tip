@@ -36,7 +36,12 @@ module TipsHelper
     popularity_class = vote == :up ? "popularity_positive " : "popularity_negative "
     klazz << popularity_class
     klazz << "active" if active
-    button_tag t("tips.reputation.#{vote.to_s}"), class: klazz,
+
+    button_id = popularity_class.strip
+
+    icon = content_with_icon("", "thumbs-#{vote}")
+
+    button_tag icon, class: klazz, id: button_id,
                data: {target: tip_votes_path(tip, vote: vote.to_s)}
   end
 end

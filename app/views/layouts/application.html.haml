@@ -16,13 +16,13 @@
 
     .subbar
       .container
-        .row
+        #top_row.row
           .span12
             = render_flash
 
             = page_title
 
-    .container
+    #main_container.container
       = yield
 
     = render 'footer'

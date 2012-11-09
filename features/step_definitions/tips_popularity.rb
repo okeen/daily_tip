@@ -1,5 +1,5 @@
 When /^I give the tip an "([^"]*)" vote$/ do |vote|
-  link = vote == "up" ? "Good" : "Bad"
+  link = vote == "up" ? "popularity_positive" : "popularity_negative"
   within "#tip_votes" do
     click_button link
   end

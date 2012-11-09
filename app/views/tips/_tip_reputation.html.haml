@@ -1,5 +1,8 @@
-#tip_votes
-  .btn-group
-    = tip_vote_buttons_for(@tip, @current_user_evaluation)
 
-  %p.after_vote_message
+%h4
+  = t("popularity") + ": "
+  %span#tip_votes= @tip.reputation_for :votes
+.btn-group
+  = tip_vote_buttons_for(@tip, @current_user_evaluation)
+
+%p.after_vote_message
