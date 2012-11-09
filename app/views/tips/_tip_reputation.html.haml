@@ -2,7 +2,12 @@
 %h4
   = t("popularity") + ": "
   %span#tip_votes= @tip.reputation_for :votes
-.btn-group
-  = tip_vote_buttons_for(@tip, @current_user_evaluation)
 
-%p.after_vote_message
+- if current_user.present?
+  .btn-group
+    = tip_vote_buttons_for(@tip, @current_user_evaluation)
+
+  %p.after_vote_message
+
+- else
+  = button_link_to t(".login_to_vote"), [:new, :user, :session], class: "btn-inverse btn-small"

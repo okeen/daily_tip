@@ -15,7 +15,7 @@
       = tip_tag_list_for(@tip)
     %br
   #tip_votes.span3.pagination-right
-    = render "tip_reputation" if current_user.present?
+    = render "tip_reputation"
 
   = link_to(t("edit"), edit_tip_path(@tip),id: "edit_tip_btn", class: "btn btn-alert") if @tip.author == current_user
 
