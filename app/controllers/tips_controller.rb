@@ -1,11 +1,14 @@
 class TipsController < InheritedResources::Base
-  set_tab :home
+  set_tab :tips
+  set_tab :home, only: [:home]
+  set_tab :new, only: [:new, :edit]
 
   custom_actions collection: :tagged
 
-  before_filter :authenticate_user!, only: [:create, :update]
+  before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :delete]
   before_filter :set_new_tab, only: :new
-  before_filter :load_tags, only: [:index, :tagged]
+  before_filter :load_tags, only: [:index, :tagged, :popular]
+  before_filter :load_evaluations, only: [:show]
 
   has_scope :page, default: 1
   has_scope :order, default: "created_at DESC"
@@ -18,6 +21,11 @@ class TipsController < InheritedResources::Base
 
   def tagged
     @tips = Tip.tagged_with(params[:tag]).by_date.page(params[:page] || 1)
+    render :index
+  end
+
+  def popular
+    @tips = Tip.popular.page(params[:page] || 1)
     render :index
   end
 
@@ -35,4 +43,8 @@ class TipsController < InheritedResources::Base
     @tags = Tip.tag_counts_on :tags
   end
 
+  def load_evaluations
+    @evaluations = resource.evaluations
+    @current_user_evaluation = @evaluations.where(source_id: current_user.id).first if current_user
+  end
 end

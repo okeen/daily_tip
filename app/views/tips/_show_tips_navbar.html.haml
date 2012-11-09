@@ -1,0 +1,8 @@
+.navbar.span4.pagination-centered
+  .navbar-inner
+    %p.brand= t("tips.navbar.show")
+    %ul.nav
+      %li{class: "#{'active' if action_name == 'index'}"}
+        = link_to t("tips.navbar.by_date"), [:tips]
+      %li{class: "#{'active' if action_name == 'popular'}"}
+        = link_to t("tips.navbar.by_popularity"), [:popular, :tips]

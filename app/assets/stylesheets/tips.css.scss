@@ -67,3 +67,18 @@
     td { padding: 8px;}
   }
 }
+
+#top_row, #main_row {
+  position: relative;
+}
+
+#edit_tip_btn {
+  position: absolute;
+  top: -90px;
+  right: 0px;
+}
+
+
+#disqus_thread {
+  margin-top: 30px;
+}

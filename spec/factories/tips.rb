@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :tip do
-    title Faker::Lorem.paragraph 1
-    content Faker::Lorem.paragraph
+    title { Faker::Lorem.paragraph 1 }
+    content { Faker::Lorem.paragraph }
     association :author, factory: :user
 
     trait :with_links do

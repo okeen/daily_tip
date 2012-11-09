@@ -34,6 +34,8 @@ gem 'acts-as-taggable-on'
 gem "bootstrap-wysihtml5-rails"
 gem "ruby-readability", :require => 'readability'
 
+gem 'activerecord-reputation-system'
+
 gem "pg"
 gem "unicorn"
 

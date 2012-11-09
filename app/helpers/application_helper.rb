@@ -63,6 +63,6 @@ module ApplicationHelper
     text = content_for(:title)
     return nil if text == "none"
     text = t("#{controller_name}.#{action_name}.title") if text.blank?
-    content_tag(:h1, text, class: "page_title")
+    content_tag(:h1, text, id: "#{controller_name}_#{action_name}_title", class: "page_title")
   end
 end
