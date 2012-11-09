@@ -78,7 +78,15 @@
   right: 0px;
 }
 
-
 #disqus_thread {
   margin-top: 30px;
+}
+
+#category_and_tags {
+  padding-left: 0px;
+  background-color: white;
+
+  #category {
+    margin-right: 20px;
+  }
 }

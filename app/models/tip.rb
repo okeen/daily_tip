@@ -1,5 +1,5 @@
 class Tip < ActiveRecord::Base
-  attr_accessible :content, :title, :tag_list, :links_attributes
+  attr_accessible :content, :title, :tag_list, :links_attributes, :category_id
 
   acts_as_taggable
 
@@ -10,6 +10,7 @@ class Tip < ActiveRecord::Base
 
   has_many :links
   belongs_to :author, class_name: User
+  belongs_to :category
 
   validates :title, :content, :author_id, presence: true
 

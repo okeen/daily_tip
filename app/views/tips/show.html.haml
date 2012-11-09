@@ -10,10 +10,18 @@
       %span.tip_author= @tip.author.email
       = t(".created_on")
       = @tip.created_at.to_s(:short)
-    %p
-      %span= Tip.human_attribute_name :tags
-      = tip_tag_list_for(@tip)
+
+    #category_and_tags.breadcrumb.clearfix
+      #category.pull-left
+        - if @tip.category.present?
+          = Tip.human_attribute_name(:category) + ": "
+          = tip_category_breadcrumb @tip.category
+      #tags.pull-left
+        - unless @tip.tag_list.blank?
+          %span= Tip.human_attribute_name :tags
+          = tip_tag_list_for(@tip)
     %br
+
   #tip_votes.span3.pagination-right
     = render "tip_reputation"
 

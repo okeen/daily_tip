@@ -47,3 +47,8 @@ en:
   sessions:
     new:
       title: Log in  to Daily Tip
+
+  categories:
+    technology: Technology
+    health: Health
+    music: Music

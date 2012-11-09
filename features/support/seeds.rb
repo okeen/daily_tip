@@ -1,0 +1,1 @@
+Category.load_categories!

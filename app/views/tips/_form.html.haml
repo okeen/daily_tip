@@ -10,6 +10,8 @@
     .span5
       = f.input :tag_list, input_html: {class: "span5"}
 
+      = f.association :category, collection: Category.roots, label_method: :localized_name
+
       %fieldset#tip_links
         %legend= t(".links")
 

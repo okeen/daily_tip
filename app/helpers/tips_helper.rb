@@ -44,4 +44,10 @@ module TipsHelper
     button_tag icon, class: klazz, id: button_id,
                data: {target: tip_votes_path(tip, vote: vote.to_s)}
   end
+
+  def tip_category_breadcrumb category
+    content_tag :li do
+      link_to t("categories.#{category.name}"), [:tips], class: "tip_category_link"
+    end
+  end
 end

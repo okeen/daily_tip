@@ -29,6 +29,8 @@ gem 'kaminari-bootstrap'
 
 gem "tabs_on_rails"
 
+gem 'awesome_nested_set'
+
 gem 'acts-as-taggable-on'
 
 gem "bootstrap-wysihtml5-rails"
