@@ -1,0 +1,7 @@
+.container
+  %ul#categories.nav.nav-pills
+    %li{class: "#{'active' if @current_category.blank? }"}
+      = link_to t("categories.all"), [:tips]
+    - Category.roots.each do |root_category|
+      = category_link(root_category)
+

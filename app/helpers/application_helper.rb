@@ -65,4 +65,13 @@ module ApplicationHelper
     text = t("#{controller_name}.#{action_name}.title") if text.blank?
     content_tag(:h1, text, id: "#{controller_name}_#{action_name}_title", class: "page_title")
   end
+
+  def category_link(category)
+    logger.debug "ROOT: #{@current_category}&&#{category}"
+    active = @current_category == category ? "active" : ""
+    content_tag_for :li, category, class: active do
+      link_to t("categories.#{category.name}"), category_tips_path(category.name)
+    end
+
+  end
 end

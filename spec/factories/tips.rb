@@ -16,12 +16,20 @@ FactoryGirl.define do
       tag_list { Faker::Lorem.word }
     end
 
+    trait :with_category do
+      category { Category.all.sample }
+    end
+
     factory :tip_with_links do
       with_links
     end
 
     factory :tip_with_tags do
       with_tags
+    end
+
+    factory :tip_with_category do
+      with_category
     end
   end
 end

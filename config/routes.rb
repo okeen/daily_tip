@@ -6,6 +6,7 @@ DailyTip::Application.routes.draw do
   resources :tips do
     collection do
       get "tagged/:tag" => "tips#tagged", as: "tagged"
+      get "category/:category" => "tips#categorized", as: "category"
       get "popular" => "tips#popular", as: "popular"
     end
 

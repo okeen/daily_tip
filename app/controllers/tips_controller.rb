@@ -7,7 +7,8 @@ class TipsController < InheritedResources::Base
 
   before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :delete]
   before_filter :set_new_tab, only: :new
-  before_filter :load_tags, only: [:index, :tagged, :popular]
+  before_filter :load_tags, only: [:index, :tagged, :popular, :categorized]
+  before_filter :load_category, only: [:categorized]
   before_filter :load_evaluations, only: [:show]
 
   has_scope :page, default: 1
@@ -29,6 +30,11 @@ class TipsController < InheritedResources::Base
     render :index
   end
 
+  def categorized
+    @tips = @current_category.tips.page(params[:page] || 1)
+    render "index"
+  end
+
   def home
     @tips = Tip.by_date.limit(10)
   end
@@ -41,6 +47,10 @@ class TipsController < InheritedResources::Base
 
   def load_tags
     @tags = Tip.tag_counts_on :tags
+  end
+
+  def load_category
+    @current_category = Category.find_by_name params[:category]
   end
 
   def load_evaluations
