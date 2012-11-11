@@ -12,7 +12,7 @@ class TipsController < InheritedResources::Base
   before_filter :load_evaluations, only: [:show]
 
   has_scope :page, default: 1
-  has_scope :order, default: "created_at DESC"
+  has_scope :order, default: "created_at DESC", except: :popular
   has_scope :search, as: "q"
 
   def create
@@ -21,12 +21,12 @@ class TipsController < InheritedResources::Base
   end
 
   def tagged
-    @tips = Tip.tagged_with(params[:tag]).by_date.page(params[:page] || 1)
+    @tips = end_of_association_chain.tagged_with(params[:tag]).by_date
     render :index
   end
 
   def popular
-    @tips = Tip.popular.page(params[:page] || 1)
+    @tips = end_of_association_chain.popular
     render :index
   end
 

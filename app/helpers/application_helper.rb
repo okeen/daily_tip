@@ -67,10 +67,10 @@ module ApplicationHelper
   end
 
   def category_link(category)
-    logger.debug "ROOT: #{@current_category}&&#{category}"
     active = @current_category == category ? "active" : ""
+    subdomain = category.present? ? category.name : "www"
     content_tag_for :li, category, class: active do
-      link_to t("categories.#{category.name}"), category_tips_path(category.name)
+      link_to t("categories.#{category.name}"), tips_url(subdomain: subdomain)
     end
 
   end

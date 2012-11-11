@@ -15,3 +15,21 @@ Feature: Tips Categories
     Then I should see the category "Technology" active
     Then I should see the tips having the category "Technology"
 
+  @wip
+  Scenario: Use subdomain when accessing categories
+    Given a logged user
+    And some tagged tips with category "Technology"
+    And some other tagged tips with category "Health"
+    When I go the "technology" subdomain
+    Then I should see the category "Technology" active
+    Then I should see the tips having the category "Technology"
+
+  @wip
+  Scenario: Category subdomain scoped search
+    Given a logged user
+    And some existing tips with votes and category "Technology"
+    And some other tagged tips with category "Health"
+    When I go the "technology" subdomain
+    And I sort the tips by popularity
+    Then I should see the tips having the category "Technology"
+    And I can see the tips ordered by popularity

@@ -18,6 +18,7 @@ Spork.prefork do
   # steps to use the XPath syntax.
   Capybara.default_selector = :css
   Capybara.javascript_driver = :webkit
+  Capybara.server_port = 7171
 
   World(FactoryGirl::Syntax::Methods)
   # By default, any exception happening in your Rails application will bubble up
