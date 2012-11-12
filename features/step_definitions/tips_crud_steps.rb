@@ -44,9 +44,11 @@ Then /^I can see details about the tips$/ do
   page.should have_content "user@daily_tip.dev"
 end
 
-When /^some existing tips to search for$/ do
-  create :tip, title: "search for me", content: "And for me"
-  create :tip, title: "don't find me", content: "Please"
+Given /^some existing tips to search for$/ do
+  @tips = []
+  @tips << create(:tip, title: "search for me", content: "And for me")
+  #we don't include it in the [@tips] variable as it's not part of the good result
+  create(:tip, title: "don't find me", content: "Please")
 end
 
 When /^I search for tips using some keywords$/ do

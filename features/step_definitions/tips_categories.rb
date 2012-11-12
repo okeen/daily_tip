@@ -47,8 +47,20 @@ Then /^I should see the tips having the category "([^"]*)"$/ do |category|
 end
 
 When /^some existing tips with votes and category "([^"]*)"$/ do |category|
-  @category = Category.find_by_name category
-  step "some existing tips with votes"
+  with_category(category) { step "some existing tips with votes" }
+end
 
+When /^some existing tips to search and category "([^"]*)"$/ do |category|
+  with_category(category) { step "some existing tips to search for" }
+end
+
+When /^some other tips to search with category "([^"]*)"$/ do |category_name|
+  @other_category = Category.find_by_name category_name.downcase
+  @other_tips_with_category = create_list :tip_with_category, 5, category: @other_category, title: "search for me"
+end
+
+def with_category(category)
+  @category = Category.find_by_name category
+  yield
   @tips.each{ |t| t.update_attributes category_id: @category.id }
 end

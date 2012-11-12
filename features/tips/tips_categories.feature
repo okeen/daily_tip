@@ -3,7 +3,6 @@ Feature: Tips Categories
   as a user
   I want to set categories to my tips
 
-
   Scenario: Set tip category
     Given a logged user
     When I create a new tip and set a category on it
@@ -26,7 +25,7 @@ Feature: Tips Categories
     Then I should see the tips having the category "Technology"
 
   @with_subdomain
-  Scenario: Category subdomain scoped search
+  Scenario: Category subdomain scoped tips popularity
   Given a logged user
     And some existing tips with votes and category "Technology"
     And some other tagged tips with category "Health"
@@ -34,3 +33,13 @@ Feature: Tips Categories
     And I sort the tips by popularity
     Then I should see the tips having the category "Technology"
     And I can see the tips ordered by popularity
+
+  @with_subdomain
+  Scenario: Category subdomain scoped search
+    Given a logged user
+    And some existing tips to search and category "Technology"
+    And some other tips to search with category "Health"
+    When I go the "technology" subdomain
+    And  I search for tips using some keywords
+    Then I should see the tips having the category "Technology"
+

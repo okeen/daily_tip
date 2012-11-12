@@ -36,7 +36,7 @@ def negative_evaluation(tip, user)
 end
 
 
-When /^some existing tips with votes$/ do
+Given /^some existing tips with votes$/ do
   @tips = create_list :tip, 5
   @users = User.all
 
@@ -58,7 +58,7 @@ When /^some existing tips with votes$/ do
   negative_evaluation(@tips[3], @users[1])
 
   positive_evaluation(@tips[4], @users[1])
-
+  @tips
 end
 
 When /^I sort the tips by popularity$/ do
