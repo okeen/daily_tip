@@ -64,3 +64,7 @@ def with_category(category)
   yield
   @tips.each{ |t| t.update_attributes category_id: @category.id }
 end
+
+When /^some tagged tips with "([^"]*)" and category "([^"]*)"$/ do |tag, category|
+  with_category(category) { step "some tagged tips with \"#{tag}\"" }
+end

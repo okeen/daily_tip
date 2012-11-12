@@ -43,3 +43,13 @@ Feature: Tips Categories
     And  I search for tips using some keywords
     Then I should see the tips having the category "Technology"
 
+  @with_subdomain
+  Scenario: Category scoped tag cloud generation and navigation
+    Given a logged user
+    And some tagged tips with "Ruby" and category "Technology"
+    And some other tagged tips with category "Technology"
+    When I go the "technology" subdomain
+    Then I see the "Ruby" on tag cloud for the tips
+    When I click on the tag "Ruby"
+    Then I should see the tips having that tag "Ruby"
+

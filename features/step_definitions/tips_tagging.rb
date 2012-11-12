@@ -16,7 +16,7 @@ When /^I should see the tag list in the recently created tip$/ do
 end
 
 When /^some tagged tips with "([^"]*)"$/ do |tag|
-  @tips_with_tags = create_list :tip_with_tags, 5, tag_list: tag
+  @tips = create_list :tip_with_tags, 5, tag_list: tag
 end
 
 Then /^I see the "([^"]*)" on tag cloud for the tips$/ do |tag|
@@ -33,7 +33,7 @@ When /^I click on the tag "([^"]*)"$/ do |tag|
 end
 
 Then /^I should see the tips having that tag "([^"]*)"$/ do |tag|
-  @tips_with_tags.each do |tip_with_tag|
+  @tips.each do |tip_with_tag|
     page.should have_selector ".tip", content: tip_with_tag.title
     page.should have_selector ".tip", content: tag
   end
