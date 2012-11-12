@@ -60,7 +60,6 @@ Spork.prefork do
   #   end
   #
 
-
 end
 
 Spork.each_run do

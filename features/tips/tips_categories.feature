@@ -3,6 +3,7 @@ Feature: Tips Categories
   as a user
   I want to set categories to my tips
 
+
   Scenario: Set tip category
     Given a logged user
     When I create a new tip and set a category on it
@@ -15,7 +16,7 @@ Feature: Tips Categories
     Then I should see the category "Technology" active
     Then I should see the tips having the category "Technology"
 
-  @wip
+  @with_subdomain
   Scenario: Use subdomain when accessing categories
     Given a logged user
     And some tagged tips with category "Technology"
@@ -24,9 +25,9 @@ Feature: Tips Categories
     Then I should see the category "Technology" active
     Then I should see the tips having the category "Technology"
 
-  @wip
+  @with_subdomain
   Scenario: Category subdomain scoped search
-    Given a logged user
+  Given a logged user
     And some existing tips with votes and category "Technology"
     And some other tagged tips with category "Health"
     When I go the "technology" subdomain

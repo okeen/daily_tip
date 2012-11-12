@@ -30,7 +30,6 @@ end
 
 Then /^I should see the category "([^"]*)" active$/ do |category_name|
   @category = Category.find_by_name category_name
-  save_and_open_page
   page.should have_selector "#category_#{@category.id}.category.active", content: @category.name
 end
 
