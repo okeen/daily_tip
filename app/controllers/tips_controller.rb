@@ -57,4 +57,5 @@ class TipsController < InheritedResources::Base
     @evaluations = resource.evaluations
     @current_user_evaluation = @evaluations.where(source_id: current_user.id).first if current_user
   end
+
 end

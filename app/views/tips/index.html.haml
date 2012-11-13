@@ -1,9 +1,9 @@
 .row
-
-  %table#tips.table.table-striped.table-bordered
-    = render @tips
+  .span8
+    %table#tips.table.table-striped.table-bordered
+      = render @tips
+    = paginate collection
 
   = render "right_panel"
 
   .span12
-    = paginate collection
