@@ -6,9 +6,8 @@ class TipsController < InheritedResources::Base
   custom_actions collection: :tagged
 
   before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :delete]
-  before_filter :set_new_tab, only: :new
+  before_filter :load_category
   before_filter :load_tags, only: [:index, :tagged, :popular, :categorized]
-  before_filter :load_category, only: [:categorized]
   before_filter :load_evaluations, only: [:show]
 
   has_scope :page, default: 1
@@ -41,16 +40,21 @@ class TipsController < InheritedResources::Base
 
   protected
 
-  def set_new_tab
-    set_tab [:new]
+  def begin_of_association_chain
+    @current_category.present? ? @current_category : nil
   end
 
   def load_tags
-    @tags = Tip.tag_counts_on :tags
+    if @current_category.present?
+      @tags = @current_category.tips.tag_counts_on :tags
+    else
+      @tags = Tip.tag_counts_on :tags
+    end
   end
 
   def load_category
-    @current_category = Category.find_by_name params[:category]
+    category = params[:category] || request.subdomain
+    @current_category = Category.find_by_name(category) unless category.blank?
   end
 
   def load_evaluations
