@@ -30,7 +30,7 @@ class TipsController < InheritedResources::Base
   end
 
   def categorized
-    @tips = @current_category.tips.page(params[:page] || 1)
+    @tips = end_of_association_chain.tips.page(params[:page] || 1)
     render "index"
   end
 
