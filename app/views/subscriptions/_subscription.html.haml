@@ -1,0 +1,10 @@
+= content_tag_for :tr, subscription do
+  %td
+    = subscription.period
+  %td
+    = subscription.tip_scope
+  %td
+    = subscription.tip_count
+  %td
+    = button_link_to content_with_icon(t(".unsubscribe"), "remove"), [:user, subscription],
+      class: "btn-danger btn-small", method: :delete

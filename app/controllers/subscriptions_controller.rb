@@ -4,9 +4,7 @@ class SubscriptionsController < InheritedResources::Base
 
   def create
     @subscription = current_user.subscriptions.new params[:subscription]
-    create! do |success, failure|
-      failure.html { redirect_to [:user, :subscriptions] }
-    end
+    create! { [:user, :subscriptions] }
   end
 
   protected

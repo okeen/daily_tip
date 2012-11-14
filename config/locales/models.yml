@@ -6,3 +6,7 @@ en:
       link:
         url: Url
         description: Description
+      subscription:
+        period: Reception period
+        tip_count: Tips to receive
+        tip_scope: Tip type

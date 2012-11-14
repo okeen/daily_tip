@@ -74,4 +74,38 @@ module ApplicationHelper
     end
 
   end
+
+  # Generates a table for a collection of active record objects showing a list
+  # of its attributes. The last column in the table will have a set of buttons
+  # (edit, destroy and show). Pagination is at the top and at the bottom of the
+  # table.
+  #
+  # @param [Array] collection A collection of ActiveRecord objects.
+  # @param [Array] attr_list A list of the attributes to be shown.
+  # @return [HTML] A table to show the paginated collection of objects.
+  def table_for(collection, classes = "", *attr_list)
+    actions = false
+
+    table_id = collection.name.tableize
+    table_klazz = collection.name.constantize
+    table_headers = []
+
+    attr_list.each do |attr_name|
+      if attr_name.class == Hash && !attr_name[:actions].nil?
+        actions = attr_name[:actions]
+      else
+        table_headers << content_tag(:th, table_klazz.human_attribute_name(attr_name))
+      end
+    end
+
+    if actions
+      table_headers << content_tag(:th, t('actions'), class: 'table_actions')
+    end
+
+    thead = content_tag :thead, content_tag(:tr, table_headers.join(" ").html_safe)
+    tbody = content_tag :tbody, render(collection)
+
+    table = content_tag(:table, "#{thead} #{tbody}".html_safe, id: table_id, class: "table #{classes}")
+    table.html_safe
+  end
 end

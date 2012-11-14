@@ -11,14 +11,11 @@ en:
     error_notification:
       default_message: "Please review the problems below:"
     # Labels and hints examples
-    # labels:
-    #   defaults:
-    #     password: 'Password'
-    #   user:
-    #     new:
-    #       email: 'E-mail to sign in.'
-    #     edit:
-    #       email: 'E-mail.'
+    labels:
+      subscription:
+        period: Email reception period
+        tip_count: How many tips?
+        tip_scope: What tips?
     # hints:
     #   defaults:
     #     username: 'User name to sign in.'

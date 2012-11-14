@@ -66,3 +66,6 @@ en:
   reputation:
     vote_success: "Thanks for you vote"
   votes: "Votes"
+  subscriptions:
+    index:
+      create: "Subscribe"
