@@ -6,8 +6,8 @@
   %fieldset.span5
     %legend= t(".add_new_subscription")
     = simple_form_for :subscription, url:[:user, :subscriptions], html: {class: ""} do |f|
-      = f.input :period, collection: subscription_periods, include_blank: false, required: false
-      = f.input :tip_scope, collection: subscription_tip_scopes, include_blank: false, required: false
+      = tip_period_collection_select f
+      = tip_scope_collection_select f
       = f.input :tip_count, collection: subscription_tip_counts, include_blank: false, required: false
 
       = f.submit t(".create"), class: "btn btn-primary"

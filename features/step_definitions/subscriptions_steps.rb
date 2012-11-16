@@ -51,7 +51,9 @@ When /^I should receive a daily email with the "([^"]*)" "([^"]*)" tips$/ do |sc
 
   @tips_not_to_include = create_list :tip, 10, created_at: 25.hours.ago
 
-  email_should_have_tips Tip.popular.created_the_last_24_hours.all[0.. count.to_i - 1]
+  scoped_tips = scope == "all" ? Tip.popular : Category.find_by_name(scope).tips.popular
+
+  email_should_have_tips scoped_tips.created_the_last_24_hours.all[0.. count.to_i - 1]
   email_should_not_have_tips @tips_not_to_include
 end
 
@@ -76,6 +78,8 @@ When /^I should receive a weekly email with the "([^"]*)" "([^"]*)" tips$/ do |s
 
   @tips_not_to_include = create_list :tip, 10, created_at: 8.days.ago
 
-  email_should_have_tips Tip.popular.created_the_last_week[0.. count.to_i - 1]
+  scoped_tips = scope == "all" ? Tip.popular : Category.find_by_name(scope).tips.popular
+
+  email_should_have_tips scoped_tips.created_the_last_week[0.. count.to_i - 1]
   email_should_not_have_tips @tips_not_to_include
 end

@@ -8,7 +8,7 @@ class Subscription < ActiveRecord::Base
 
   POSSIBLE_STATES = %w(active canceled)
   PERIODS = %w(daily weekly)
-  SCOPES = %w(all category)
+  SCOPES = %w(all)
   COUNTS = [1, 10, 25]
 
   def self.PERIODS
