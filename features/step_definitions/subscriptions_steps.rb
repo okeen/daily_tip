@@ -43,3 +43,39 @@ When /^I should see a "([^"]*)" subscription for the "([^"]*)" "([^"]*)" tips$/ 
     end
   end
 end
+
+When /^I should receive a daily email with the "([^"]*)" "([^"]*)" tips$/ do |scope, count|
+  Subscription.deliver_daily_tips!
+  open_email @user.email
+  current_email.subject.should == "Your Daily Tips are here"
+
+  @tips_not_to_include = create_list :tip, 10, created_at: 25.hours.ago
+
+  email_should_have_tips Tip.popular.created_the_last_24_hours.all[0.. count.to_i - 1]
+  email_should_not_have_tips @tips_not_to_include
+end
+
+def email_should_have_tips(tips)
+  tips.each do |tip|
+    current_email.body.should  =~ /<h3>#{tip.title.gsub ".", "\."}<\/h3>/
+    current_email.body.should  =~ /<a href=\"http:\/\/daily_tip.dev\/tips\/#{tip.id}\">View details<\/a>/
+  end
+end
+
+def email_should_not_have_tips(tips)
+  tips.each do |tip|
+    current_email.body.should_not  =~ /<h3>#{tip.title.gsub ".", "\."}<\/h3>/
+    current_email.body.should_not  =~ /<a href=\"http:\/\/daily_tip.dev\/tips\/#{tip.id}\">View details<\/a>/
+  end
+end
+
+When /^I should receive a weekly email with the "([^"]*)" "([^"]*)" tips$/ do |scope, count|
+  Subscription.deliver_weekly_tips!
+  open_email @user.email
+  current_email.subject.should == "Your Weekly Tips are here"
+
+  @tips_not_to_include = create_list :tip, 10, created_at: 8.days.ago
+
+  email_should_have_tips Tip.popular.created_the_last_week[0.. count.to_i - 1]
+  email_should_not_have_tips @tips_not_to_include
+end

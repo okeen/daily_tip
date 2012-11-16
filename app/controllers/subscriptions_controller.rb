@@ -3,8 +3,11 @@ class SubscriptionsController < InheritedResources::Base
   before_filter :authenticate_user!
 
   def create
-    @subscription = current_user.subscriptions.new params[:subscription]
     create! { [:user, :subscriptions] }
+  end
+
+  def destroy
+    destroy! { [:user, :subscriptions] }
   end
 
   protected

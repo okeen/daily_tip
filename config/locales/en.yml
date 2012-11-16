@@ -52,3 +52,11 @@ en:
     technology: Technology
     health: Health
     music: Music
+  mailers:
+    subscriptions:
+      daily:
+        subject: "Your Daily Tips are here"
+      weekly:
+        subject: "Your Weekly Tips are here"
+        title: "Your Weekly Tips are here"
+  view_details: "View details"

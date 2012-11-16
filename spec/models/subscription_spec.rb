@@ -9,27 +9,34 @@ describe Subscription do
 
   context "A brand new subscription" do
     before(:each) do
-      subject { create :subscription }
+      @tips = create_list :tip, 10
+      @user = create :user
+      @subscription = create :subscription, user: @user
+      subject { @subscription }
+      pending "How can I test this?"
     end
 
     its(:state) { should eq "active" }
   end
 
-  describe "deliver_daily_tips" do
-    before do
-      @tip = create :tip
-      @user = @tip.author
-      @subscription = create :subscription
-    end
+  describe "delivers daily tips" do
 
-    it "loads a tip from today" do
-      Tip.expects(:from_today).returns [@tip]
-    end
+    context "of all the popular tips with a count of 10" do
+      before do
+        @older_tips = create_list :tip, 5, created_at: 48.hours.ago
+        @subscription = create :daily_subscription, user: @user, tip_count: 10, tip_scope: "all"
+        Subscription.deliver_daily_tips!
+        subject { @subscription }
+      end
 
-    it "delivers the tip to the subscribers" do
-      Subscription.expects(:active).returns [@subscription]
-      SubscriptionsMailer.expects(:daily_tip).with(@tip, @user)
+      it "selects the last 24 hours tips" do
+        Tip.expects(:created_the_last_24_hours).once
+      end
+
+      it "delivers the tip to the subscribers" do
+        SubscriptionsMailer.expects(:daily_tip).with(@tips, @user)
+      end
+
     end
-    Subscription.deliver_daily_tips!
   end
 end

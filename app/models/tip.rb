@@ -17,9 +17,19 @@ class Tip < ActiveRecord::Base
   accepts_nested_attributes_for :links
 
   scope :from_today, lambda {
-    beginining_of_day = Date.today.beginning_of_day
-    end_of_day = Date.today.end_of_day
-    where("created_at between ? and ?", beginining_of_day, end_of_day )
+    by_date Date.today.beginning_of_day, Date.today.end_of_day
+  }
+
+  scope :created_the_last_24_hours, lambda {
+    between_dates 24.hours.ago, DateTime.now
+  }
+
+  scope :created_the_last_week, lambda {
+    between_dates 7.days.ago, DateTime.now
+  }
+
+  scope :between_dates, lambda { |from, to|
+    where("tips.created_at between ? and ?", from, to )
   }
 
   scope :search, lambda {|query|
