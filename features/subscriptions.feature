@@ -3,7 +3,6 @@ Feature: Subscriptions to tips
   As a user
   I want to subscribe to the tips so I receive a daily mail with them
 
-  @wip
   Scenario: Weekly Subscription to popular tip
     Given a logged user
     And some existing tips with votes
@@ -13,7 +12,6 @@ Feature: Subscriptions to tips
     And I should see a "weekly" subscription for the "all" "1" tips
     And I should receive a weekly email with the "all" "1" tips
 
-  @wip
   Scenario: Daily Subscription to popular tip
     Given a logged user
     And some existing tips with votes
@@ -23,7 +21,6 @@ Feature: Subscriptions to tips
     And I should see a "daily" subscription for the "all" "10" tips
     And I should receive a daily email with the "all" "10" tips
 
-  @wip
   Scenario: Weekly Subscription to Technology tips
     Given a logged user
     And some existing tips with votes and category "technology"
