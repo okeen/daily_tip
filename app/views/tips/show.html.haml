@@ -6,10 +6,8 @@
   %br
   .span9
     %p
-      = t(".created_by")
-      %span.tip_author= @tip.author.email
-      = t(".created_on")
-      = @tip.created_at.to_s(:short)
+      %span.tip_author= content_with_icon(@tip.author.email, "user")
+      = content_with_icon(@tip.created_at.to_s(:short), "calendar")
 
     #category_and_tags.breadcrumb.clearfix
       #category.pull-left

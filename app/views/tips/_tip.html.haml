@@ -1,7 +1,7 @@
 = content_tag_for :tr, tip do
   %td
     .tip_resume.pull-left
-      = tip.title.truncate(70)
+      = link_to tip.title.truncate(70), tip
       = tip_tag_list_for tip
 
-    = link_to t("show"), tip, class: "pull-right btn btn-primary"
+    = link_to content_with_icon(t("show"), "chevron-right"), tip, class: "pull-right btn "

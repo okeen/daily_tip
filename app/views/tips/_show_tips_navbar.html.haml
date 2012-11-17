@@ -3,6 +3,6 @@
     %p.brand= t("tips.navbar.show")
     %ul.nav
       %li{class: "#{'active' if action_name == 'index'}"}
-        = link_to t("tips.navbar.by_date"), [:tips]
+        = link_to content_with_icon(t("tips.navbar.by_date"), "time"), [:tips]
       %li{class: "#{'active' if action_name == 'popular'}"}
-        = link_to t("tips.navbar.by_popularity"), [:popular, :tips]
+        = link_to content_with_icon(t("tips.navbar.by_popularity"), "thumbs-up"), [:popular, :tips]

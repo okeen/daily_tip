@@ -1,10 +1,10 @@
 %tr.link{data: {link_id: link.id}}
   %td
     = tip_link link
-  %td.link_action.span3
-    = link_to t(".show_inline"), "#", class: "btn btn-small link_show_inline"
-    = link_to t("visit"), raw(link.url), class: "btn btn-small link_visit", target: :_blank
-    = link_to t("close"), "#", class: "pull-right btn btn-small link_close hide"
+  %td.link_action.span2
+    = link_to content_with_icon(t(".show_inline"), "eye-open"), "#", class: "btn btn-small link_show_inline"
+    = link_to content_with_icon("","arrow-right"), raw(link.url), class: "btn btn-small link_visit", target: :_blank
+    = link_to content_with_icon("", "remove"), "#", class: "pull-right btn btn-small link_close hide"
 
 %tr.readability_row.hide
   %td{colspan: 2}

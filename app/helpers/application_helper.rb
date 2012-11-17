@@ -72,7 +72,6 @@ module ApplicationHelper
     content_tag_for :li, category, class: active do
       link_to t("categories.#{category.name}"), tips_url(subdomain: subdomain)
     end
-
   end
 
   # Generates a table for a collection of active record objects showing a list

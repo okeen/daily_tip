@@ -1,7 +1,7 @@
 
 %h4
   = t("popularity") + ": "
-  %span#tip_votes= @tip.reputation_for :votes
+  %span#tip_votes{class: tip_normalized_reputation_class(@tip)}= @tip.reputation_for(:votes).to_i
 
 - if current_user.present?
   .btn-group

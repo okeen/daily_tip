@@ -1,8 +1,13 @@
 module TipsHelper
   def tip_tag_list_for(tip)
-    tip.tag_list.map do |tag|
+    tags = tip.tag_list.map do |tag|
       link_to tag, tagged_tips_path(tag), class: "tag badge"
     end.join.html_safe
+    unless tags.blank?
+      content_with_icon("", "tags") + tags
+    else
+      ""
+    end
   end
 
   def tip_link(link)
@@ -48,6 +53,19 @@ module TipsHelper
   def tip_category_breadcrumb category
     content_tag :li do
       link_to t("categories.#{category.name}"), [:tips], class: "tip_category_link"
+    end
+  end
+
+  def tip_normalized_reputation_class(tip)
+    reputation = tip.normalized_reputation_for(:votes)
+    if reputation > 0.75
+      "badge badge-success"
+    elsif reputation > 0.5
+      "badge badge-info"
+    elsif reputation > 0.25
+      "badge badge-warning"
+    else
+      "badge badge-important"
     end
   end
 end

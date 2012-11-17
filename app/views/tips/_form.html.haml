@@ -22,8 +22,8 @@
           = links_fields.label :description, Link.human_attribute_name(:description)
           = links_fields.text_area :description, class: "span5", rows: 3
 
-          = links_fields.link_to_remove t(".remove_link"), class: "btn"
+          = links_fields.link_to_remove content_with_icon(t(".remove_link"), "minus"), class: "btn"
           %hr
 
-        = f.link_to_add t(".add_link"), :links, class: "btn btn-success"
+        = f.link_to_add content_with_icon(t(".add_link"), "bookmark", :white), :links, class: "btn btn-success"
 
